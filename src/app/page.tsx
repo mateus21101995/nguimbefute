@@ -2,7 +2,6 @@ import Advertising from '@/components/ advertising'
 import Footer from '@/components/footer'
 import Header from '@/components/header'
 import HomeDiaspora from '@/components/home/home-diaspora'
-import HomeInternacional from '@/components/home/home-internacional'
 import HomeNacional from '@/components/home/home-nacional'
 import HomePodcast from '@/components/home/home-podcast'
 import HomeSelecao from '@/components/home/home-selecao'
@@ -13,13 +12,14 @@ export default function Home() {
     <main className="flex-1 min-h-screen flex-col">
        <Advertising />
        <Header />
-       <section className='flex flex-col gap-4 py-3 rounded-lg'>
+       <section className='flex flex-col rounded-lg'>
           <SlideBar />
-          <HomeNacional />
-          <HomePodcast />
-          <HomeInternacional />
-          <HomeSelecao />
-          <HomeDiaspora />
+          <div className="flex flex-col gap-3">
+            <HomeNacional />
+            <HomePodcast />
+            <HomeSelecao />
+            <HomeDiaspora />
+          </div>
        </section>
        <Footer />
     </main>

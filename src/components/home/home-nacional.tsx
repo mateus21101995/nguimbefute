@@ -1,17 +1,185 @@
 import Image from "next/image";
-import Faf from "../../../public/faf.jpg"
+import Tundavala from "../../../public/tundavala.jpg"
+import Link from "next/link";
+import axios from "axios";
+import { PostsProps } from "@/app/entidade/postProps";
 
-export default function HomeNacional(){
+async function getPost(){
+    const response = await axios.get<PostsProps[]>("http://localhost:4000/posts");
+    return response.data;
+}
+
+export default async function HomeNacional(){
+
+    const posts = await getPost();
     return(
-        <main className="container m-auto max-h-[700px] grid grid-cols-4 gap-3">
-            <div className="w-full h-64 rounded-lg flex flex-col gap-2 shadow">
-                <div className="w-full h-40">
-                    <Image src={Faf} alt="faf" className="w-full h-full rounded-lg" />
+        <main className="flex p-3">
+            <div className="container m-auto max-w-[1200px]">
+                <div className="text-3xl py-5 font-semibold">
+                    <h1>DESTAQUES</h1>
                 </div>
-                <div className="p-2">
-                    <h1 className="font-semibold">Titulo da Notícia</h1>
-                    <p className="text-slate-950 text-sm">resumo da noticias em 200 caracteres</p>
-                    <p className="text-slate-950 text-sm"><strong>Publicado por: </strong>Mateus</p>
+                <div className="w-full grid grid-cols-4 gap-6">
+                    {posts.slice(0,4).map((post)=>(
+                        <div className="w-full h-60 flex flex-col gap-2" key={post.id}>
+                            <div className="w-full rounded-lg bg-blue-100 h-48">
+                                <Image src={Tundavala} alt="Tundavala" className="w-full rounded-lg h-full" />
+                            </div>
+                            <div className="">
+                                <Link href={post.slug} className="text-slate-900 text-lg">
+                                    {post.title}
+                                </Link>
+                            </div>
+                        </div>
+                    ))}
+
+                </div>
+
+                <div className="text-3xl py-5 font-semibold ">
+                    <h1>NOTÍCIAS AO MINUTO</h1>
+                </div>
+
+                <div className="flex justify-between gap-8">
+                    <div className="w-full grid grid-cols-2 gap-6">
+                        <div className="w-full h-60 flex flex-col gap-2">
+                            <div className="w-full rounded-lg bg-blue-100 h-48">
+                                <Image src={Tundavala} alt="Tundavala" className="w-full rounded-lg h-full" />
+                            </div>
+                            <div className="">
+                                <Link href={"/"} className="text-slate-900 text-xl">
+                                    Estadio da Tundavala
+                                </Link>
+                            </div>
+                        </div>
+                        
+                        <div className="w-full h-60 flex flex-col gap-2">
+                            <div className="w-full rounded-lg bg-blue-100 h-48">
+                                <Image src={Tundavala} alt="Tundavala" className="w-full rounded-lg h-full" />
+                            </div>
+                            <div className="">
+                                <Link href={"/"} className="text-slate-900 text-xl">
+                                    Estadio da Tundavala
+                                </Link>
+                            </div>
+                        </div>
+                        
+                        <div className="w-full h-60 flex flex-col gap-2">
+                            <div className="w-full rounded-lg bg-blue-100 h-48">
+                                <Image src={Tundavala} alt="Tundavala" className="w-full rounded-lg h-full" />
+                            </div>
+                            <div className="">
+                                <Link href={"/"} className="text-slate-900 text-xl">
+                                    Estadio da Tundavala
+                                </Link>
+                            </div>
+                        </div>
+                        
+                        <div className="w-full h-60 flex flex-col gap-2">
+                            <div className="w-full rounded-lg bg-blue-100 h-48">
+                                <Image src={Tundavala} alt="Tundavala" className="w-full rounded-lg h-full" />
+                            </div>
+                            <div className="">
+                                <Link href={"/"} className="text-slate-900 text-xl">
+                                    Estadio da Tundavala
+                                </Link>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                    <div className="w-[700px] bg-slate-200 rounded-lg">
+                        <h1>Transferências e Rumores</h1>
+                        
+                    </div>
+                </div>
+
+                
+                <div className="w-full grid grid-cols-4 gap-6 py-4">
+                    <div className="w-full h-60 flex flex-col gap-2">
+                        <div className="w-full rounded-lg bg-blue-100 h-48">
+                            <Image src={Tundavala} alt="Tundavala" className="w-full rounded-lg h-full" />
+                        </div>
+                        <div className="">
+                            <Link href={"/"} className="text-slate-900 text-xl">
+                                Estadio da Tundavala
+                            </Link>
+                        </div>
+                    </div>
+
+                    <div className="w-full h-60 flex flex-col gap-2">
+                        <div className="w-full rounded-lg bg-blue-100 h-48">
+                            <Image src={Tundavala} alt="Tundavala" className="w-full rounded-lg h-full" />
+                        </div>
+                        <div className="">
+                            <Link href={"/"} className="text-slate-900 text-xl">
+                                Estadio da Tundavala
+                            </Link>
+                        </div>
+                    </div>
+
+                    <div className="w-full h-60 flex flex-col gap-2">
+                        <div className="w-full rounded-lg bg-blue-100 h-48">
+                            <Image src={Tundavala} alt="Tundavala" className="w-full rounded-lg h-full" />
+                        </div>
+                        <div className="">
+                            <Link href={"/"} className="text-slate-900 text-xl">
+                                Estadio da Tundavala
+                            </Link>
+                        </div>
+                    </div>
+
+                    <div className="w-full h-60 flex flex-col gap-2">
+                        <div className="w-full rounded-lg bg-blue-100 h-48">
+                            <Image src={Tundavala} alt="Tundavala" className="w-full rounded-lg h-full" />
+                        </div>
+                        <div className="">
+                            <Link href={"/"} className="text-slate-900 text-xl">
+                                Estadio da Tundavala
+                            </Link>
+                        </div>
+                    </div>
+                    <div className="w-full h-60 flex flex-col gap-2">
+                        <div className="w-full rounded-lg bg-blue-100 h-48">
+                            <Image src={Tundavala} alt="Tundavala" className="w-full rounded-lg h-full" />
+                        </div>
+                        <div className="">
+                            <Link href={"/"} className="text-slate-900 text-xl">
+                                Estadio da Tundavala
+                            </Link>
+                        </div>
+                    </div>
+
+                    <div className="w-full h-60 flex flex-col gap-2">
+                        <div className="w-full rounded-lg bg-blue-100 h-48">
+                            <Image src={Tundavala} alt="Tundavala" className="w-full rounded-lg h-full" />
+                        </div>
+                        <div className="">
+                            <Link href={"/"} className="text-slate-900 text-xl">
+                                Estadio da Tundavala
+                            </Link>
+                        </div>
+                    </div>
+
+                    <div className="w-full h-60 flex flex-col gap-2">
+                        <div className="w-full rounded-lg bg-blue-100 h-48">
+                            <Image src={Tundavala} alt="Tundavala" className="w-full rounded-lg h-full" />
+                        </div>
+                        <div className="">
+                            <Link href={"/"} className="text-slate-900 text-xl">
+                                Estadio da Tundavala
+                            </Link>
+                        </div>
+                    </div>
+
+                    <div className="w-full h-60 flex flex-col gap-2">
+                        <div className="w-full rounded-lg bg-blue-100 h-48">
+                            <Image src={Tundavala} alt="Tundavala" className="w-full rounded-lg h-full" />
+                        </div>
+                        <div className="">
+                            <Link href={"/"} className="text-slate-900 text-xl">
+                                Estadio da Tundavala
+                            </Link>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
